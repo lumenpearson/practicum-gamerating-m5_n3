@@ -1,0 +1,9 @@
+# Ignore all files with .min.js extension
+*.min.js
+
+# Ignore the "build" directory
+/node_modules
+/compiled
+
+# Ignore specific files
+temp/*.json
