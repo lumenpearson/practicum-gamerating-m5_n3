@@ -34,7 +34,7 @@ const createListItem = (parent, item, template) => {
   const li = document.createElement("li");
   li.id = `game-${item.id}`;
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Удалить";
+  deleteButton.textContent = "Delete";
   deleteButton.classList.add("delete-game__button");
   li.append(buildCard(item, template));
   li.append(deleteButton);
@@ -51,7 +51,7 @@ const createGamesListItems = (listSelector, template, array) => {
 
 fetchGames("/games").then(data => {
   if (!data || !data.length) {
-    showPlaceholder(".games-list", "Нет игр в базе данных. Добавьте игру.");
+    showPlaceholder(".games-list", "No games in the database. Add a new game.");
     return;
   } else {
     createGamesListItems(
@@ -99,12 +99,11 @@ const submitForm = (() => {
     const resp = await sendForm("/games", objectToSend);
     if (resp.status !== 200) {
       form.querySelector(".form__message").classList.add("error");
-      form.querySelector(".form__message").textContent =
-        "Игра с таким именем уже есть";
+      form.querySelector(".form__message").textContent = "There's already a game by that name.";
       return;
     }
     form.querySelector(".form__message").classList.add("success");
-    form.querySelector(".form__message").textContent = "Игра добавлена";
+    form.querySelector(".form__message").textContent = "Game has been added";
     const obj = (await resp.json()).updated;
     createListItem(
       document.querySelector(".games-list"),
@@ -140,7 +139,7 @@ const submitDelete = async item => {
       e.target.parentElement.remove();
       let hasCards = document.querySelectorAll(".games-list li");
       if (!hasCards.length) {
-        showPlaceholder(".games-list", "Нет игр в базе данных. Добавьте игру.");
+        showPlaceholder(".games-list", "No games in the database. Add a new game.");
       }
     });
 };
