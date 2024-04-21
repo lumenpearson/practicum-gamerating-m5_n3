@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameControl</title>
+    <title>GameControl :: Game List Control</title>
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
@@ -33,23 +33,23 @@
           <h2>Add game</h2>
           <button class="close-dialog">Cancel</button>
         </div>
-        <label class="form__label">
+        <label class="form__label form__label-required">
           <span>Name</span>
           <input name="title" required type="text" />
         </label>
-        <label class="form__label">
-          <span>Ссылка на изображение</span>
+        <label class="form__label form__label-required">
+          <span>Link to preview</span>
           <input name="image" required type="url" />
         </label>
-        <label class="form__label">
-          <span>Ссылка на HTML-файл</span>
+        <label class="form__label form__label-required">
+          <span>Link to HTML file</span>
           <input name="link" required type="url" />
         </label>
-        <label class="form__label">
+        <label class="form__label form__label-required">
           <span>Description</span>
           <textarea name="description" required></textarea>
         </label>
-        <button type="submit">Add</button>
+        <button class="button-submit" type="submit">Submit</button>
         <span class="form__message"></span>
       </form>
     </dialog>
