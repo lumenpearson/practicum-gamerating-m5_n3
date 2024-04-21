@@ -6,7 +6,7 @@ const getAllGames = async (req, res, next) => {
     res.status(400);
     res.send({
       status: 'error',
-      message: 'Нет игр в базе данных. Добавь игру.'
+      message: 'No games in the database. Add a new game.'
     });
     return;
   }
@@ -40,7 +40,7 @@ const updateGamesArray = (req, res, next) => {
     next();
   } else {
     res.status(400);
-    res.send({ status: 'error', message: 'Игра с таким именем уже есть.' });
+    res.send({ status: 'error', message: "There's already a game by that name." });
   }
 };
 
