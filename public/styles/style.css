@@ -1,18 +1,18 @@
 @font-face {
-  font-family: "Rubic One";
+  font-family: 'Rubic One';
   src: url(/fonts/rubic-one.woff);
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Anonymous Pro";
+  font-family: 'Anonymous Pro';
   src: url(/fonts/anonymouspro-regular.woff);
   font-weight: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Anonymous Pro";
+  font-family: 'Anonymous Pro';
   src: url(/fonts/anonymouspro-bold.woff);
   font-weight: bold;
   font-display: swap;
@@ -26,15 +26,13 @@
 body {
   margin: 0;
   background-color: #1e1e1e;
-  color: #fff;
   min-height: 100vh;
   display: grid;
   place-items: center;
-  font-family: "Anonymous Pro", serif;
+  font-family: 'Anonymous Pro', serif;
   font-size: 24px;
-  background: #fc00ff;
-  background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);
-  background: linear-gradient(to right, #00dbde, #fc00ff);
+  color: #000;
+  background: #fff;
   padding: 1em 2em;
 }
 
@@ -44,11 +42,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Rubic One", sans-serif;
-  margin: 0.5em 0 0.5em;
+  font-family: 'Rubic One', sans-serif;
   text-transform: uppercase;
   font-size: 1.2em;
   word-wrap: break-word;
+  line-height: 100%;
 }
 
 h1 {
@@ -67,20 +65,31 @@ button {
   border: none;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 2em;
-  background: #fc00ff;
-  background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);
-  background: linear-gradient(to right, #00dbde, #fc00ff);
-  color: #fff;
-  cursor: pointer;
-  text-transform: uppercase;
   font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  border-radius: 2em;
+  border: 2px solid #000;
+  box-shadow: 6px 9px 0 rgb(0, 0, 0);
+  transform: translate(-6px, -9px);
+  transition:
+    transform 0.3s ease-out,
+    box-shadow 0.3s ease-out;
 }
 
-button:hover {
-  background: #fc00ff;
-  background: -webkit-linear-gradient(to left, #00dbde, #fc00ff);
-  background: linear-gradient(to left, #00dbde, #fc00ff);
+button:hover,
+button:focus,
+button:focus-within,
+button:focus-visible {
+  transform: translate(-4px, -5px);
+  box-shadow: 4px 5px 0 #000;
+}
+
+button:active {
+  transform: translate(0px, 0px);
+  box-shadow: 0 0 0 #000;
 }
 
 body:has(dialog[open]) {
@@ -89,7 +98,9 @@ body:has(dialog[open]) {
 
 img {
   width: 100%;
-  border-radius: 2em;
+  height: 256px;
+  border-radius: 0 0 2em 2em;
+  background: #e6e6e6;
 }
 
 a {
@@ -98,18 +109,19 @@ a {
 }
 
 .box {
-  background-color: #fff;
   color: #000;
-  border-radius: 2em;
   padding: 2em;
+  border: 2px solid #000;
+  border-radius: 2em;
 }
 
 .games-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2em 0 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  row-gap: 2.8em;
   gap: 2em;
 }
 
@@ -134,13 +146,22 @@ a {
 
 .game-link {
   display: block;
+  height: 100%;
+  margin-bottom: 2em;
   border-radius: 2em;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 1em;
+  border: 2px solid #000;
+  box-shadow: 10px 14px 0 rgb(0, 0, 0);
+  overflow: hidden;
 }
 
 .game__description-container {
   padding: 1em;
+}
+
+.game-description {
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }
 
 .form__label {
@@ -150,11 +171,54 @@ a {
 
 input,
 textarea {
-  padding: 1em;
-  border-radius: 2em;
-  border: 1px solid #000;
+  padding: 16px 26px;
+  min-height: 2.5em;
+  border-radius: 1.3em;
+  border: 2px solid #000;
   font-family: inherit;
   font-size: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007aff;
+}
+
+input:user-valid,
+textarea:user-valid {
+  border-color: #62c880;
+}
+
+input:user-invalid,
+textarea:user-invalid {
+  border-color: #ff5b5b;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 5em;
+  max-height: 16em;
+}
+
+.form__label span {
+  padding-inline-start: 0.5em;
+}
+
+.form__label-required span::after {
+  content: '*';
+  position: absolute;
+  margin-top: -4px;
+  padding-inline-start: 2px;
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: bold;
+  color: #ff5b5b;
+  background-color: inherit;
+}
+
+.form__message:empty {
+  display: none;
 }
 
 dialog::backdrop {
@@ -164,10 +228,10 @@ dialog::backdrop {
 dialog {
   position: fixed;
   width: 95%;
-  max-width: 700px;
+  max-width: 924px;
   border: none;
   border-radius: 2em;
-  height: 80vh;
+  scrollbar-width: none;
 }
 
 * {
@@ -196,10 +260,37 @@ dialog {
   border-radius: 2em;
 }
 
-.add-game {
-  margin-bottom: 2em;
+.add-game__button,
+.button-submit {
+  display: block;
+  margin: 0 auto 0;
 }
 
 .delete-game__button {
   width: 100%;
+}
+
+::selection,
+::-moz-selection {
+  color: #fff;
+  background-color: #000;
+}
+
+@media (max-width: 650px) {
+  body {
+    padding: initial;
+  }
+  main {
+    width: 100%;
+  }
+}
+
+@media (hover: none) {
+  button:hover,
+  button:focus,
+  button:focus-within,
+  button:focus-visible {
+    transform: translate(-6px, -9px);
+    box-shadow: 6px 9px 0 rgb(0, 0, 0);
+  }
 }

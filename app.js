@@ -1,9 +1,10 @@
 const path = require('path');
 const express = require('express');
 const qr = require('qrcode-terminal');
-
 const bodyParser = require('body-parser');
-const mainRoute = require('./routes/main');
+
+const { cors } = require('./middlewares');
+const mainRouter = require('./routes/main');
 const gamesRouter = require('./routes/games');
 
 const PORT = 3000;
@@ -27,7 +28,7 @@ async function startServer() {
     chalk = require('chalk');
   }
 
-  app.use(bodyParser.json(), express.static(path.join(__dirname, 'public')), mainRoute, gamesRouter);
+  app.use(cors, bodyParser.json(), express.static(path.join(__dirname, 'public')), mainRouter, gamesRouter);
 
   app.listen(PORT, () => {
     generateQRCode(url);
