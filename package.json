@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wa5fa/practicum-gamecontrol-m5_n3.git"
+    "url": "git+https://github.com/lumenpearson/practicum-gamecontrol-m5_n3.git"
   },
-  "author": "Wa5Fa <wa.5.fa.helper@gmail.com>",
+  "author": "LumenPearson <lumenpearson@gmail.com>",
   "license": "MIT",
   "keywords": [
     "yandex",
@@ -31,9 +31,9 @@
     "mit-license"
   ],
   "bugs": {
-    "url": "https://github.com/wa5fa/practicum-gamecontrol-m5_n3/issues"
+    "url": "https://github.com/lumenpearson/practicum-gamecontrol-m5_n3/issues"
   },
-  "homepage": "https://github.com/wa5fa/practicum-gamecontrol-m5_n3/readme",
+  "homepage": "https://github.com/lumenpearson/practicum-gamecontrol-m5_n3/readme",
   "dependencies": {
     "chalk": "^5.3.0",
     "express": "^4.19.2",
